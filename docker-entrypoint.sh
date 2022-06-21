@@ -187,5 +187,6 @@ fi
 ##################
 
 
+
 exec /opt/keycloak/bin/kc.sh start $SYS_PROPS $@ -Dquarkus.http.port=$PORT
 exit $?
