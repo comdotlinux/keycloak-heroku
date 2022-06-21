@@ -19,4 +19,4 @@ ENV KC_HOSTNAME=simple-authenticator.herokuapp.com
 ENV KC_HOSTNAME_PORT=${PORT}
 ENV KC_HEALTH_ENABLED=false
 RUN chmod 0755 /opt/keycloak/bin/kc.sh
-ENTRYPOINT ["/opt/keycloak/bin/kc.sh", "start"]
+ENTRYPOINT ["sh", "-c" "/opt/keycloak/bin/kc.sh start"]
