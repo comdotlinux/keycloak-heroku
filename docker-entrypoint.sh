@@ -178,9 +178,9 @@ if [ "$DB_VENDOR" != "h2" ]; then
     /bin/sh /opt/keycloak/tools/databases/change-database.sh $DB_VENDOR
 fi
 
-/opt/keycloak/tools/x509.sh
-/opt/keycloak/tools/jgroups.sh $JGROUPS_DISCOVERY_PROTOCOL $JGROUPS_DISCOVERY_PROPERTIES
-/opt/keycloak/tools/autorun.sh
+# /opt/keycloak/tools/x509.sh
+# /opt/keycloak/tools/jgroups.sh $JGROUPS_DISCOVERY_PROTOCOL $JGROUPS_DISCOVERY_PROPERTIES
+# /opt/keycloak/tools/autorun.sh
 
 ##################
 # Start Keycloak #
