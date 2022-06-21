@@ -18,4 +18,4 @@ ENV KC_DB_URL=${DATABASE_URL}
 ENV KC_HOSTNAME=simple-authenticator.herokuapp.com
 ENV KC_HOSTNAME_PORT=${PORT}
 ENV KC_HEALTH_ENABLED=false
-ENTRYPOINT ["sh", "-c" "/opt/keycloak/bin/kc.sh start"]
+CMD ["/opt/keycloak/bin/kc.sh", "start"]
