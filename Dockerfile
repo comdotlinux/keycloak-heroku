@@ -19,6 +19,6 @@ ENV KC_DB_USERNAME=<DBUSERNAME>
 ENV KC_DB_PASSWORD=<DBPASSWORD>
 ENV KC_HOSTNAME=localhost
 
-COPY docker-entrypoint.sh /opt/jboss/tools
+COPY docker-entrypoint.sh /opt/keycloak/bin/
 
-ENTRYPOINT [ "/opt/jboss/tools/docker-entrypoint.sh" ]
+ENTRYPOINT [ "/opt/keycloak/bin/docker-entrypoint.sh" ]
