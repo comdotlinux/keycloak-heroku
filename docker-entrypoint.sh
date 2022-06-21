@@ -6,13 +6,11 @@ if [ "$DATABASE_URL" != "" ]; then
 
     regex='^postgres://([a-zA-Z0-9_-]+):([a-zA-Z0-9]+)@([a-z0-9.-]+):([[:digit:]]+)/([a-zA-Z0-9_-]+)$'
     if [[ $DATABASE_URL =~ $regex ]]; then
-        export DB_ADDR=${BASH_REMATCH[3]}
-        export DB_PORT=${BASH_REMATCH[4]}
-        export DB_DATABASE=${BASH_REMATCH[5]}
-        export DB_USER=${BASH_REMATCH[1]}
-        export DB_PASSWORD=${BASH_REMATCH[2]}
-
-        echo "DB_ADDR=$DB_ADDR, DB_PORT=$DB_PORT, DB_DATABASE=$DB_DATABASE, DB_USER=$DB_USER, DB_PASSWORD=$DB_PASSWORD"
+        export KC_DB_URL=postgres://${BASH_REMATCH[3]}:${BASH_REMATCH[4]}/${BASH_REMATCH[5]}
+        export KC_DB_USERNAME=${BASH_REMATCH[1]}
+        export KC_DB_PASSWORD=${BASH_REMATCH[2]}
+        export KC_HOSTNAME=${BASH_REMATCH[3]}
+        echo "KC_DB_URL=$KC_DB_URL, KC_DB_USERNAME=$KC_DB_USERNAME, KC_DB_PASSWORD=$KC_DB_PASSWORD"
         export DB_VENDOR=postgres
     fi
 
@@ -188,5 +186,6 @@ fi
 # Start Keycloak #
 ##################
 
-exec /opt/jboss/keycloak/bin/standalone.sh $SYS_PROPS $@ -Djboss.http.port=$PORT 
+
+exec /opt/keycloak/bin/kc.sh start $SYS_PROPS $@ -Dquarkus.http.port=$PORT
 exit $?
